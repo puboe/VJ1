@@ -1,0 +1,154 @@
+fileFormatVersion: 2
+guid: 96116606c454145a8811e49a9713960e
+timeCreated: 1440312640
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: DonkeyKongSprites_0
+    21300002: DonkeyKongSprites_1
+    21300004: DonkeyKongSprites_2
+    21300006: DonkeyKongSprites_3
+    21300008: DonkeyKongSprites_4
+    21300010: DonkeyKongSprites_5
+    21300012: DonkeyKongSprites_6
+    21300014: DonkeyKongSprites_7
+    21300016: DonkeyKongSprites_8
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: DonkeyKongSprites_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 83
+        width: 43
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DonkeyKongSprites_1
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 83
+        width: 45
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DonkeyKongSprites_2
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 82
+        width: 43
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DonkeyKongSprites_3
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 45
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DonkeyKongSprites_4
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 42
+        width: 46
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DonkeyKongSprites_5
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 42
+        width: 40
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DonkeyKongSprites_6
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 5
+        width: 43
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DonkeyKongSprites_7
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 6
+        width: 46
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: DonkeyKongSprites_8
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 0
+        width: 47
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
