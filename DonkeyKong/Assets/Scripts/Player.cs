@@ -14,15 +14,15 @@ public class Player : MonoBehaviour {
 	private bool climbing = false;
 	private bool onLadder = false;
 	private bool jumping = false;
+	public bool dead = false;
 
 	void Start () {
 		animator = this.GetComponent<Animator>();
 		controller = GetComponent<CharacterController>();
 	}
 
-	void FixedUpdate () {
+	void Update () {
 		movement = Vector2.zero;
-		animator.SetInteger ("Move", 1);
 		if (Input.GetKey (KeyCode.D) && ground) {
 			animator.SetInteger ("Move", 1);
 			movement.x += 1;
@@ -45,11 +45,12 @@ public class Player : MonoBehaviour {
 		if (Input.GetKey (KeyCode.Space) && !bLadder && ground && !jumping) {
 			animator.SetInteger ("Move", 3);
 			jumping = true;
+			ground = false;
 			movement.y += 15;
 		}else {
 			animator.SetInteger ("Move", 0);
 		}
-		if (!bLadder && !ground && !tLadder && !climbing) {
+		if (jumping && !bLadder && !climbing && !tLadder) {
 			movement.y -= 1.5f * gravity * Time.deltaTime;
 		}
 		controller.Move(movement * Time.deltaTime);
@@ -97,6 +98,10 @@ public class Player : MonoBehaviour {
 			this.ground = true;
 			this.climbing = false;
 			this.jumping = false;
+		}
+		if (hit.gameObject.name == "Barrel") {
+			dead = true;
+			Debug.Log("Perdiste AMEO");
 		}
 	}
 
