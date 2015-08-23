@@ -53,7 +53,7 @@ public class Player : MonoBehaviour {
 			movement.y += 15;
 		}
 
-		if (!Input.anyKey) {
+		if (!Input.anyKey && !jumping) {
 			animator.SetInteger ("Move", 0);
 		}
 		if (jumping && !bLadder && !climbing && !tLadder) {
