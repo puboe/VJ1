@@ -15,6 +15,7 @@ public class Player : MonoBehaviour {
 	private bool onLadder = false;
 	private bool jumping = false;
 	public bool dead = false;
+	private bool facingRight = true;
 
 	void Start () {
 		animator = this.GetComponent<Animator>();
@@ -22,14 +23,17 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update () {
+		int moveDirection = 0;
 		movement = Vector2.zero;
 		if (Input.GetKey (KeyCode.D) && ground) {
 			animator.SetInteger ("Move", 1);
 			movement.x += 1;
+			moveDirection = 1;
 		}
 		if (Input.GetKey (KeyCode.A) && ground) {
 			animator.SetInteger ("Move", 1);
 			movement.x -= 1;
+			moveDirection = -1;
 		} 
 		if (Input.GetKey (KeyCode.W) && (bLadder || climbing )) {
 			animator.SetInteger ("Move", 2);
@@ -47,12 +51,21 @@ public class Player : MonoBehaviour {
 			jumping = true;
 			ground = false;
 			movement.y += 15;
-		}else {
+		}
+
+		if (!Input.anyKey) {
 			animator.SetInteger ("Move", 0);
 		}
 		if (jumping && !bLadder && !climbing && !tLadder) {
 			movement.y -= 1.5f * gravity * Time.deltaTime;
 		}
+
+		if (moveDirection < 0 && facingRight) {
+			flip ();
+		} else if (moveDirection > 0 && !facingRight) {
+			flip ();
+		}
+
 		controller.Move(movement * Time.deltaTime);
 	}
 
@@ -105,5 +118,11 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	private void flip() {
+		facingRight = !facingRight;
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
+	}
 
 }
