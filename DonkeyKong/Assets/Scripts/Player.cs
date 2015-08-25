@@ -51,7 +51,7 @@ public class Player : MonoBehaviour {
 			movement.y -= 1;
 			ground = false;
 		}
-		if (Input.GetKey (KeyCode.Space) && !bLadder && ground && !jumping) {
+		if (Input.GetKey (KeyCode.Space) && ground && !jumping) {
 			animator.SetInteger ("Move", 3);
 			PlaySound(jumpingSound);
 			jumping = true;
