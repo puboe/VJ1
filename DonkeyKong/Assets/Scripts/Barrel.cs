@@ -63,7 +63,7 @@ public class Barrel : MonoBehaviour {
 				right = true;
 			}
 			animator.SetInteger ("Roll", 0);
-		} else if (coll.gameObject.name == "Barrel") {
+		} else if (coll.gameObject.name == "Barrel" || coll.gameObject.name == "DonkeyKong") {
 			if (right) {	
 				movement = Vector2.left;
 				right = false;
@@ -73,7 +73,7 @@ public class Barrel : MonoBehaviour {
 			}
 			animator.SetInteger ("Roll", 0); 
 		}else if (coll.gameObject.name == "Player") {
-			Debug.Log("Perdiste AMEO");
+			Application.LoadLevel (4);
 		} else if (coll.gameObject.name == "BarrelEnd") {
 			move = false;
 			transform.position = new Vector2(-1.588f, 2.225f);

@@ -121,12 +121,10 @@ public class Player : MonoBehaviour {
 		}
 		if (hit.gameObject.name == "Barrel") {
 			dead = true;
-			Debug.Log("Perdiste AMEO");
 		}
 		if (hit.gameObject.name == "Princess") {
 			dead = false;
 			Application.LoadLevel ("Win");
-			Debug.Log("Ganaste AMEO");
 		}
 	}
 
