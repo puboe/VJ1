@@ -55,7 +55,6 @@ public class Barrel : MonoBehaviour {
 			}
 			animator.SetInteger ("Roll", 0);
 		} else if (coll.gameObject.name == "EndLevel") {
-			Debug.Log ("hol");
 			if (right) {	
 				movement = Vector2.left;
 				right = false;
@@ -64,11 +63,20 @@ public class Barrel : MonoBehaviour {
 				right = true;
 			}
 			animator.SetInteger ("Roll", 0);
-		} else if (coll.gameObject.name == "Player") {
+		} else if (coll.gameObject.name == "Barrel") {
+			if (right) {	
+				movement = Vector2.left;
+				right = false;
+			} else {
+				movement = Vector2.right;
+				right = true;
+			}
+			animator.SetInteger ("Roll", 0); 
+		}else if (coll.gameObject.name == "Player") {
 			Debug.Log("Perdiste AMEO");
 		} else if (coll.gameObject.name == "BarrelEnd") {
 			move = false;
-			transform.position = new Vector2(999,999);
+			transform.position = new Vector2(-1.588f, 2.225f);
 			onPool = true;
 		}
 	}

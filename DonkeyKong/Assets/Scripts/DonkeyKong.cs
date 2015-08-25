@@ -14,8 +14,8 @@ public class DonkeyKong : MonoBehaviour {
 	IEnumerator BarrelRoll(){
 		while (true) {
 			animator.SetInteger ("Throw", 1);
-			yield return new WaitForSeconds(3.0f);
 			GameManager.instance.Roll();
+			yield return new WaitForSeconds(3.0f);
 			animator.SetInteger ("Throw", 0);
 		}
 	}

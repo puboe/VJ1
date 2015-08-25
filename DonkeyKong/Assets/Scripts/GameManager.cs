@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour {
 				barrels [i].transform.position = new Vector2 (-1.588f, 2.225f);
 				barrels [i].move = true;
 				barrels [i].onPool = false;
+				barrels [i].GetComponent<Rigidbody>().isKinematic = false;
+				barrels [i].GetComponent<Rigidbody>().detectCollisions = true;
 				break;
 			}
 		}

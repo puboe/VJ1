@@ -6,7 +6,7 @@ public class Player : MonoBehaviour {
 	private Animator animator;
 	private CharacterController controller;
 	private Vector2 movement;
-	private float jumpSpeed = 11.0f;
+	private int jumpSpeed = 20;
 	private float gravity = 10.0f;
 	private bool ground = true;
 	private bool bLadder = false;
@@ -28,13 +28,15 @@ public class Player : MonoBehaviour {
 	void Update () {
 		int moveDirection = 0;
 		movement = Vector2.zero;
-		if (Input.GetKey (KeyCode.D) && ground) {
-			animator.SetInteger ("Move", 1);
+		if (Input.GetKey (KeyCode.D) && (ground || jumping)) {
+			if(!jumping)
+				animator.SetInteger ("Move", 1);
 			movement.x += 1;
 			moveDirection = 1;
 		}
-		if (Input.GetKey (KeyCode.A) && ground) {
-			animator.SetInteger ("Move", 1);
+		if (Input.GetKey (KeyCode.A) && (ground || jumping)) {
+			if(!jumping)
+				animator.SetInteger ("Move", 1);
 			movement.x -= 1;
 			moveDirection = -1;
 		} 
@@ -54,13 +56,13 @@ public class Player : MonoBehaviour {
 			PlaySound(jumpingSound);
 			jumping = true;
 			ground = false;
-			movement.y += 15;
+			movement.y += jumpSpeed;
 		}
 
 		if (!Input.anyKey && !jumping) {
 			animator.SetInteger ("Move", 0);
 		}
-		if (jumping && !bLadder && !climbing && !tLadder) {
+		if (jumping || (!bLadder && !climbing && !tLadder)) {
 			movement.y -= 1.5f * gravity * Time.deltaTime;
 		}
 
@@ -107,6 +109,7 @@ public class Player : MonoBehaviour {
 	void OnTriggerEnter (Collider coll) {
 		if (coll.gameObject.name == "OnLadder") {
 			onLadder = true;
+			ground = true;
 		}
 	}
 
@@ -120,6 +123,11 @@ public class Player : MonoBehaviour {
 			dead = true;
 			Debug.Log("Perdiste AMEO");
 		}
+		if (hit.gameObject.name == "Princess") {
+			dead = false;
+			Application.LoadLevel ("Win");
+			Debug.Log("Ganaste AMEO");
+		}
 	}
 
 	private void flip() {
@@ -132,5 +140,9 @@ public class Player : MonoBehaviour {
 	private void PlaySound(AudioClip clip) {
 		
 		audio.PlayOneShot (clip, 0.75f);
+	}
+
+	public void LoadScene(int level) {
+		Application.LoadLevel (level);
 	}
 }
