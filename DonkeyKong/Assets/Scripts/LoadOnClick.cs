@@ -10,4 +10,8 @@ public class LoadOnClick : MonoBehaviour {
 		//loadingImage.SetActive (true);
 		Application.LoadLevel (level);
 	}
+
+	public void Exit() {
+		Application.Quit ();
+	}
 }
