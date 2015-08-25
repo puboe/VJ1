@@ -16,10 +16,13 @@ public class Player : MonoBehaviour {
 	private bool jumping = false;
 	public bool dead = false;
 	private bool facingRight = true;
+	private AudioSource audio;
+	public AudioClip jumpingSound;
 
 	void Start () {
 		animator = this.GetComponent<Animator>();
 		controller = GetComponent<CharacterController>();
+		audio = GetComponent <AudioSource> ();
 	}
 
 	void Update () {
@@ -48,6 +51,7 @@ public class Player : MonoBehaviour {
 		}
 		if (Input.GetKey (KeyCode.Space) && !bLadder && ground && !jumping) {
 			animator.SetInteger ("Move", 3);
+			PlaySound(jumpingSound);
 			jumping = true;
 			ground = false;
 			movement.y += 15;
@@ -69,7 +73,7 @@ public class Player : MonoBehaviour {
 		controller.Move(movement * Time.deltaTime);
 	}
 
-	void OnTriggerStay (Collider coll){
+	void OnTriggerStay (Collider coll) {
 		if ((coll.gameObject.name == "Bottom") && coll.bounds.Contains (controller.bounds.min)) {
 			bLadder=true;
 			tLadder=false;
@@ -87,7 +91,7 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerExit (Collider coll){
+	void OnTriggerExit (Collider coll) {
 		if (coll.gameObject.name == "Bottom") {
 			bLadder = false;
 		}
@@ -100,7 +104,7 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter (Collider coll){
+	void OnTriggerEnter (Collider coll) {
 		if (coll.gameObject.name == "OnLadder") {
 			onLadder = true;
 		}
@@ -125,4 +129,8 @@ public class Player : MonoBehaviour {
 		transform.localScale = theScale;
 	}
 
+	private void PlaySound(AudioClip clip) {
+		
+		audio.PlayOneShot (clip, 0.75f);
+	}
 }
