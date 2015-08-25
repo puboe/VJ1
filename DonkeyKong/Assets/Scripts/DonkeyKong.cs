@@ -8,16 +8,16 @@ public class DonkeyKong : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		animator = this.GetComponent<Animator>();
+		StartCoroutine (BarrelRoll ());
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-		// Ejecutar cada un intervalo de tiempo (depende de cuando se tiren los barriles).
-		if (Input.GetKey (KeyCode.X)) {
+	IEnumerator BarrelRoll(){
+		while (true) {
 			animator.SetInteger ("Throw", 1);
-		} else {
+			yield return new WaitForSeconds(3.0f);
+			GameManager.instance.Roll();
 			animator.SetInteger ("Throw", 0);
-		} 
+		}
 	}
+
 }

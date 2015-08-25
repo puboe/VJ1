@@ -9,6 +9,8 @@ public class Barrel : MonoBehaviour {
 	bool facingRight = true;
 	bool down = false;
 	bool right = true;
+	public bool onPool = true;
+	public bool move = true;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +21,9 @@ public class Barrel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate (movement * Time.deltaTime);
+		if (move) {
+			transform.Translate (movement * Time.deltaTime);
+		}
 	}
 
 	void OnTriggerStay (Collider coll){
@@ -51,6 +55,7 @@ public class Barrel : MonoBehaviour {
 			}
 			animator.SetInteger ("Roll", 0);
 		} else if (coll.gameObject.name == "EndLevel") {
+			Debug.Log ("hol");
 			if (right) {	
 				movement = Vector2.left;
 				right = false;
@@ -61,6 +66,10 @@ public class Barrel : MonoBehaviour {
 			animator.SetInteger ("Roll", 0);
 		} else if (coll.gameObject.name == "Player") {
 			Debug.Log("Perdiste AMEO");
+		} else if (coll.gameObject.name == "BarrelEnd") {
+			move = false;
+			transform.position = new Vector2(999,999);
+			onPool = true;
 		}
 	}
 }
