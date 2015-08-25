@@ -55,14 +55,9 @@ public class Barrel : MonoBehaviour {
 			}
 			animator.SetInteger ("Roll", 0);
 		} else if (coll.gameObject.name == "EndLevel") {
-			if (right) {	
-				movement = Vector2.left;
-				right = false;
-			} else {
-				movement = Vector2.right;
-				right = true;
-			}
-			animator.SetInteger ("Roll", 0);
+			move = false;
+			transform.position = new Vector2 (999, 999);
+			onPool = true;
 		} else if (coll.gameObject.name == "Barrel" || coll.gameObject.name == "DonkeyKong") {
 			if (right) {	
 				movement = Vector2.left;
@@ -76,7 +71,7 @@ public class Barrel : MonoBehaviour {
 			Application.LoadLevel (4);
 		} else if (coll.gameObject.name == "BarrelEnd") {
 			move = false;
-			transform.position = new Vector2(-1.588f, 2.225f);
+			transform.position = new Vector2(999, 999);
 			onPool = true;
 		}
 	}

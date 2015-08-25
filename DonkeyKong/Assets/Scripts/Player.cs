@@ -63,7 +63,7 @@ public class Player : MonoBehaviour {
 			animator.SetInteger ("Move", 0);
 		}
 		if (jumping || (!bLadder && !climbing && !tLadder)) {
-			movement.y -= 1.5f * gravity * Time.deltaTime;
+			movement.y -= 2.5f * gravity * Time.deltaTime;
 		}
 
 		if (moveDirection < 0 && facingRight) {
