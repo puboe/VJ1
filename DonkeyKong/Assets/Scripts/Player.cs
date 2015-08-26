@@ -14,7 +14,6 @@ public class Player : MonoBehaviour {
 	private bool climbing = false;
 	private bool onLadder = false;
 	private bool jumping = false;
-	public bool dead = false;
 	private bool facingRight = true;
 	private AudioSource audio;
 	public AudioClip jumpingSound;
@@ -51,7 +50,7 @@ public class Player : MonoBehaviour {
 			movement.y -= 1;
 			ground = false;
 		}
-		if (Input.GetKey (KeyCode.Space) && ground && !onLadder && !jumping) {
+		if (Input.GetKey (KeyCode.Space) && ground && !jumping) {
 			animator.SetInteger ("Move", 3);
 			PlaySound(jumpingSound);
 			jumping = true;
@@ -63,7 +62,7 @@ public class Player : MonoBehaviour {
 			animator.SetInteger ("Move", 0);
 		}
 		if (jumping || (!bLadder && !climbing && !tLadder)) {
-			movement.y -= 2.5f * gravity * Time.deltaTime;
+			movement.y -= 4.0f * gravity * Time.deltaTime;
 		}
 
 		if (moveDirection < 0 && facingRight) {
@@ -103,6 +102,7 @@ public class Player : MonoBehaviour {
 		}
 		if (coll.gameObject.name == "OnLadder") {
 			onLadder = false;
+			climbing = false;
 		}
 	}
 
@@ -110,6 +110,10 @@ public class Player : MonoBehaviour {
 		if (coll.gameObject.name == "OnLadder") {
 			onLadder = true;
 			ground = true;
+		}
+
+		if (coll.gameObject.name == "Barrel") {
+			GameManager.instance.loose = true;
 		}
 	}
 
@@ -120,11 +124,10 @@ public class Player : MonoBehaviour {
 			this.jumping = false;
 		}
 		if (hit.gameObject.name == "Barrel") {
-			dead = true;
+			GameManager.instance.loose = true;
 		}
 		if (hit.gameObject.name == "Princess") {
-			dead = false;
-			Application.LoadLevel ("Win");
+			GameManager.instance.win = true;
 		}
 	}
 
@@ -135,12 +138,8 @@ public class Player : MonoBehaviour {
 		transform.localScale = theScale;
 	}
 
-	private void PlaySound(AudioClip clip) {
-		
+	private void PlaySound(AudioClip clip) {		
 		audio.PlayOneShot (clip, 0.75f);
 	}
 
-	public void LoadScene(int level) {
-		Application.LoadLevel (level);
-	}
 }

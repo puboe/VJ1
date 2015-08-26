@@ -5,7 +5,7 @@ public class Barrel : MonoBehaviour {
 
 	private Animator animator;
 	private Vector2 movement;
-	private CapsuleCollider collider;
+	public CapsuleCollider collider;
 	bool facingRight = true;
 	bool down = false;
 	bool right = true;
@@ -37,6 +37,9 @@ public class Barrel : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider coll){
+		if (coll.gameObject.name == "Barrel") {
+			GameManager.instance.loose = true;
+		}
 		if (coll.gameObject.name == "OnLadder") {
 			if(Random.value < 0.5){	
 				down = true;
@@ -54,21 +57,16 @@ public class Barrel : MonoBehaviour {
 				right = false;
 			}
 			animator.SetInteger ("Roll", 0);
-		} else if (coll.gameObject.name == "EndLevel") {
-			move = false;
-			transform.position = new Vector2 (999, 999);
-			onPool = true;
-		} else if (coll.gameObject.name == "Barrel" || coll.gameObject.name == "DonkeyKong") {
+		} else if (coll.gameObject.name == "Barrel" || coll.gameObject.name == "DonkeyKong" || coll.gameObject.name == "EndLevel") {
 			if (right) {	
 				movement = Vector2.left;
 				right = false;
 			} else {
 				movement = Vector2.right;
 				right = true;
-			}
-			animator.SetInteger ("Roll", 0); 
+			} 
 		}else if (coll.gameObject.name == "Player") {
-			Application.LoadLevel (4);
+			GameManager.instance.loose = true;
 		} else if (coll.gameObject.name == "BarrelEnd") {
 			move = false;
 			transform.position = new Vector2(999, 999);

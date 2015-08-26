@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager instance;
 	public int pool = 15;
+	public bool win = false;
+	public bool loose = false;
 	public GameObject barrelPrefab;
 	public List<Barrel> barrels;
 
@@ -21,7 +23,10 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (win)
+			Application.LoadLevel ("Win");
+		else if (loose)
+			Application.LoadLevel ("Loose");
 	}
 
 	private void GeneratePool (){
