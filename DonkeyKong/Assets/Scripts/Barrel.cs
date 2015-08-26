@@ -22,7 +22,7 @@ public class Barrel : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (move) {
-			transform.Translate (1.5f * movement * Time.deltaTime);
+			transform.Translate (1.3f * movement * Time.deltaTime);
 		}
 	}
 

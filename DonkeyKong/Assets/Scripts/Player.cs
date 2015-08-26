@@ -6,7 +6,7 @@ public class Player : MonoBehaviour {
 	private Animator animator;
 	private CharacterController controller;
 	private Vector2 movement;
-	private int jumpSpeed = 10;
+	private int jumpSpeed = 11;
 	private float gravity = 10.0f;
 	private bool ground = true;
 	private bool bLadder = false;
