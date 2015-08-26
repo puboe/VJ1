@@ -48,7 +48,8 @@ public class Barrel : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision coll){
-		if (coll.gameObject.name == "Ground") {
+		string name = coll.gameObject.name;
+		if (name == "Ground") {
 			if (Random.value < 0.75) {	
 				movement = Vector2.right;
 				right = true;
@@ -57,7 +58,7 @@ public class Barrel : MonoBehaviour {
 				right = false;
 			}
 			animator.SetInteger ("Roll", 0);
-		} else if (coll.gameObject.name == "Barrel" || coll.gameObject.name == "DonkeyKong" || coll.gameObject.name == "EndLevel") {
+		} else if (name == "Barrel" || name == "DonkeyKong" || name == "EndLevel" || name == "Princess") {
 			if (right) {	
 				movement = Vector2.left;
 				right = false;
@@ -65,9 +66,9 @@ public class Barrel : MonoBehaviour {
 				movement = Vector2.right;
 				right = true;
 			} 
-		}else if (coll.gameObject.name == "Player") {
+		}else if (name == "Player") {
 			GameManager.instance.loose = true;
-		} else if (coll.gameObject.name == "BarrelEnd") {
+		} else if (name == "BarrelEnd") {
 			move = false;
 			transform.position = new Vector2(999, 999);
 			onPool = true;
