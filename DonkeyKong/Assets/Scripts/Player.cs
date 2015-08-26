@@ -46,12 +46,12 @@ public class Player : MonoBehaviour {
 			this.ground = false;
 			this.climbing = true;
 		}
-		if (Input.GetKey (KeyCode.S) && (tLadder || bLadder || onLadder)) {
+		if (Input.GetKey (KeyCode.S) && (tLadder || bLadder || onLadder || climbing)) {
 			animator.SetInteger ("Move", 2);
 			movement.y -= 1;
 			ground = false;
 		}
-		if (Input.GetKey (KeyCode.Space) && ground && !jumping) {
+		if (Input.GetKey (KeyCode.Space) && ground && !onLadder && !jumping) {
 			animator.SetInteger ("Move", 3);
 			PlaySound(jumpingSound);
 			jumping = true;
