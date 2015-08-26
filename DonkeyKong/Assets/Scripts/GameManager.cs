@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
 	public bool loose = false;
 	public GameObject barrelPrefab;
 	public List<Barrel> barrels;
+	public float poolX;
+	public float poolY;
 
 	void Awake (){
 		instance = this;
@@ -39,7 +41,7 @@ public class GameManager : MonoBehaviour {
 	public void Roll(){
 		foreach (Barrel barrel in barrels) {
 			if (barrel.onPool){
-				barrel.transform.position = new Vector2 (-1.588f, 2.225f);
+				barrel.transform.position = new Vector2 (poolX, poolY);
 				barrel.move = true;
 				barrel.onPool = false;
 				barrel.GetComponent<Rigidbody>().isKinematic = false;
