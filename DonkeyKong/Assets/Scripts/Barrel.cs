@@ -49,7 +49,7 @@ public class Barrel : MonoBehaviour {
 
 	void OnCollisionEnter (Collision coll){
 		if (coll.gameObject.name == "Ground") {
-			if (Random.value < 0.5) {	
+			if (Random.value < 0.75) {	
 				movement = Vector2.right;
 				right = true;
 			} else {

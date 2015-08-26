@@ -6,7 +6,7 @@ public class Player : MonoBehaviour {
 	private Animator animator;
 	private CharacterController controller;
 	private Vector2 movement;
-	private int jumpSpeed = 20;
+	private int jumpSpeed = 10;
 	private float gravity = 10.0f;
 	private bool ground = true;
 	private bool bLadder = false;
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour {
 			movement.y -= 1;
 			ground = false;
 		}
-		if (Input.GetKey (KeyCode.Space) && ground && !jumping) {
+		if (Input.GetKey (KeyCode.Space) && !jumping) {
 			animator.SetInteger ("Move", 3);
 			PlaySound(jumpingSound);
 			jumping = true;
