@@ -26,7 +26,10 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (win)
-			Application.LoadLevel ("Win");
+			if (Application.loadedLevel == 1)
+				Application.LoadLevel (5);
+			else
+				Application.LoadLevel (3);
 		else if (loose)
 			Application.LoadLevel ("Loose");
 	}
